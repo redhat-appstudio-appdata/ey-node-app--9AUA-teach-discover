@@ -23,7 +23,7 @@ spec:
         app.kubernetes.io/instance: devfile-sample-vata
     spec:
       containers:
-      - image: quay.io/redhat-appstudio/user-workload:eyuen-tenant-devfile-sample-vata
+      - image: quay.io/redhat-appstudio/user-workload@sha256:c2e7754352dc76f02df57b0c4e7a8739dc1cfe95fa31d11665365abd44f12d16
         imagePullPolicy: Always
         livenessProbe:
           httpGet:
