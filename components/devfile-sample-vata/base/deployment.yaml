@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-vata
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-vata
+    app.kubernetes.io/part-of: ey-node-app
+  name: devfile-sample-vata
+  namespace: eyuen-tenant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: devfile-sample-vata
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: devfile-sample-vata
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload:eyuen-tenant-devfile-sample-vata
+        imagePullPolicy: Always
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3001
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        name: container-image
+        ports:
+        - containerPort: 3001
+        readinessProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          tcpSocket:
+            port: 3001
+        resources:
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
