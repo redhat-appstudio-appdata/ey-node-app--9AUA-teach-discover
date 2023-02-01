@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: devfile-sample-vata
+  namespace: eyuen-tenant
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio/user-workload@sha256:c2e7754352dc76f02df57b0c4e7a8739dc1cfe95fa31d11665365abd44f12d16
+        name: container-image
+        resources: {}
+status: {}
